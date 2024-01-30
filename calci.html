@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            padding-top: 20px;
+            margin: auto;
+        }
+
+        body {
+            background-color: #5a807d;
+            margin: 0; /* Remove default margin */
+        }
+
+        input {
+            border-radius: 10px;
+            font-size: 24px;
+            height: 50px;
+            width: 220px;
+            padding: 10px;
+        }
+
+        button {
+            border-radius: 10px; /* Adjusted border radius */
+            font-size: 18px;
+            background: #ffffff;
+            width: 50px;
+            height: 40px;
+            margin: 6px;
+        }
+
+        .calculator {
+            background-color: #041830;
+            /* Darkened background color */
+            padding: 20px;
+            /* Reduced padding for a more compact appearance */
+            border-radius: 10px;
+            /* Adjusted border radius */
+            display: inline-block;
+        }
+
+        h1 {
+            color: #041830;
+            /* Darkened heading color */
+            font-size: 36px;
+            /* Increased font size for emphasis */
+            margin-bottom: 20px;
+            /* Added margin for better spacing */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>ARITHMETIC CALCULATOR</h1>
+
+        <div class="calculator">
+            <input type="text" name="screen" id="display">
+            <table>
+                <tr>
+                    <td><button>(</button></td>
+                    <td><button>)</button></td>
+                    <td><button>C</button></td>
+                    <td><button>=</button></td>
+                </tr>
+                <tr>
+                    <td><button>9</button></td>
+                    <td><button>8</button></td>
+                    <td><button>7</button></td>
+                    <td><button>+</button></td>
+                </tr>
+                <tr>
+                    <td><button>6</button></td>
+                    <td><button>5</button></td>
+                    <td><button>4</button></td>
+                    <td><button>-</button></td>
+                </tr>
+                <tr>
+                    <td><button>3</button></td>
+                    <td><button>2</button></td>
+                    <td><button>1</button></td>
+                    <td><button>X</button></td>
+                </tr>
+                <tr>
+                    <td><button>0</button></td>
+                    <td><button>.</button></td>
+                    <td><button>%</button></td>
+                    <td><button>/</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+
+</html>
+<script>
+    let screen = document.getElementById("display");
+    buttons = document.querySelectorAll("button");
+    let screenValue = "";
+    for (item of buttons) {
+        item.addEventListener("click", (e) => {
+            buttonText = e.target.innerText;
+            if (buttonText == "X") {
+                buttonText = "*";
+            }
+            if (buttonText == "C") {
+                screenValue = "";
+            } else if (buttonText == "=") {
+                try {
+                    screenValue = eval(screenValue);
+                } catch (error) {
+                    screenValue = "Expression error";
+                }
+            } else {
+                screenValue += buttonText;
+            }
+            screen.value = screenValue;
+        });
+    }
+</script>
